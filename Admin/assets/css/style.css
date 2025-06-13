@@ -1,0 +1,229 @@
+/* ======= Custom Capstone JS Styles ======= */
+
+.display-4 {
+    color: #a259ff !important;
+    text-shadow: 1px 2px 8px #e0d7fa;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.navbar-brand {
+    color: #fff !important;
+    text-shadow: 0 2px 8px #a259ff, 0 0 2px #fff;
+}
+
+.navbar {
+    margin-bottom: 24px;
+    background: linear-gradient(90deg, #a259ff 0%, #e0d7fa 100%) !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px 0 rgba(162, 89, 255, 0.07);
+}
+
+.navbar-nav .nav-link {
+    border-radius: 18px;
+    transition: background 0.2s, color 0.2s;
+    margin-right: 6px;
+    padding-left: 16px;
+    padding-right: 16px;
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-item.active .nav-link {
+    background: #e0d7fa;
+    color: #a259ff !important;
+}
+
+.btn-light {
+    transition: background 0.2s, color 0.2s;
+    background: #fff;
+    color: #a259ff;
+    border: 1.5px solid #e0d7fa;
+    font-weight: bold;
+}
+
+.btn-light:hover {
+    background: #a259ff;
+    color: #fff;
+}
+
+.modern-tab .nav-link {
+    font-weight: 500;
+    color: #a259ff;
+    border-radius: 18px 18px 0 0;
+    transition: background 0.2s, color 0.2s;
+    margin-right: 8px;
+    padding: 10px 24px;
+    background: #f3e9ff;
+}
+
+.modern-tab .nav-link.active,
+.modern-tab .nav-link:hover {
+    background: #e0d7fa;
+    color: #a259ff !important;
+    border-bottom: 2px solid #a259ff;
+}
+
+.hr-purple {
+    border: none;
+    border-top: 2px solid #a259ff;
+    margin: 0 0 24px 0;
+}
+
+#btnThemSP {
+    background: linear-gradient(90deg, #a259ff 0%, #e0d7fa 100%);
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 8px 0 rgba(162, 89, 255, 0.12);
+    border-radius: 18px;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+}
+
+#btnThemSP:hover {
+    background: linear-gradient(90deg, #e0d7fa 0%, #a259ff 100%);
+    color: #fff;
+}
+
+.input-group .form-control {
+    background: #fff;
+    border: 1.5px solid #e0d7fa;
+    color: #a259ff;
+    border-radius: 50px !important;
+}
+
+.input-group-text {
+    border-radius: 50px !important;
+    background: #e0d7fa;
+    color: #a259ff;
+    border: none;
+}
+
+.input-group-text i,
+.fa-search {
+    color: #a259ff !important;
+}
+
+.tblSanPham.card {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1.5px solid #e0d7fa;
+    box-shadow: 0 4px 24px 0 rgba(162, 89, 255, 0.07);
+    border-radius: 18px;
+    overflow-x: auto;
+}
+
+.modern-table th,
+.modern-table td {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.modern-table thead {
+    background: #e0d7fa;
+}
+
+.modern-table tbody tr:hover {
+    background: #f3e9ff;
+    transition: background 0.2s;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 2px #a259ff;
+    border-color: #a259ff;
+}
+
+/* Modal styles */
+.modal-content {
+    border-radius: 18px !important;
+    border: 1.5px solid #e0d7fa;
+    background: #fff;
+    box-shadow: 0 8px 32px 0 rgba(162, 89, 255, 0.15);
+}
+
+.modal-header {
+    background: #a259ff !important;
+    color: #fff !important;
+    border-radius: 18px 18px 0 0 !important;
+    border-bottom: none;
+    padding: 24px 24px 16px 24px;
+}
+
+.modal-title {
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+}
+
+.modal-header .close {
+    color: #fff;
+    opacity: 1;
+    font-size: 2rem;
+    text-shadow: none;
+    transition: color 0.2s;
+}
+
+.modal-header .close:hover {
+    color: #e0d7fa;
+}
+
+.modal-body label {
+    font-weight: bold;
+    color: #222 !important;
+}
+
+.modal-body .form-control,
+.modal-body textarea {
+    border-radius: 12px;
+    border: 1.5px solid #e0d7fa;
+    background: #fff;
+    color: #333;
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-body .form-control:focus,
+.modal-body textarea:focus {
+    border-color: #a259ff;
+    box-shadow: 0 0 0 2px #e0d7fa;
+}
+
+/* Loader */
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #a259ff;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 1.5rem;
+    }
+
+    .modern-tab .nav-link {
+        padding: 8px 10px;
+        font-size: 0.95rem;
+    }
+}
