@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./../../assets/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm navbar-dark shadow rounded"
+            style="background: linear-gradient(90deg, #a259ff 0%, #e0d7fa 100%);">
+            <a class="navbar-brand font-weight-bold d-flex align-items-center" href="#">
+                <i class="fa fa-shopping-bag mr-2"></i>ShopOnline
+            </a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link d-flex align-items-center" href="#"><i class="fa fa-home mr-1"></i>Trang
+                            chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#"><i class="fa fa-th-list mr-1"></i>Sản
+                            phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#"><i
+                                class="fa fa-shopping-cart mr-1"></i>Giỏ hàng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#"><i
+                                class="fa fa-clipboard-list mr-1"></i>Đơn hàng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#"><i class="fa fa-envelope mr-1"></i>Liên
+                            hệ</a>
+                    </li>
+                </ul>
+                <a class="btn btn-light font-weight-bold px-4 py-2 ml-auto" style="border-radius: 20px;" href="#">
+                    <i class="fa fa-user mr-1"></i>Đăng nhập
+                </a>
+            </div>
+        </nav>
+
+        <header class="display-4 my-4 text-center font-weight-bold text-primary"
+            style="letter-spacing:2px; text-shadow: 1px 2px 8px #b3c6ff;">
+            Capstone JS
+        </header>
+        <!-- Phan tab menu -->
+        <ul class="nav nav-tabs justify-content-center modern-tab" role="tablist" style="border-bottom: none;">
+            <li class="nav-item">
+                <a class="nav-link active" href="#DanhSachSP" role="tab" data-toggle="tab"><i
+                        class="fa fa-list mr-1"></i>Danh sách sản phẩm</a>
+            </li>
+        </ul>
+        <hr class="hr-purple">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!--Danh sách sản phẩm -->
+            <div role="tabpanel" class="tab-pane in active" id="DanhSachSP">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-8 d-flex align-items-center">
+                        <!-- BEGIN BUTTON THÊM MỚI -->
+                        <button id="btnThemSP" class="btn btn-success shadow-sm font-weight-bold px-4 py-2 rounded-pill"
+                            data-toggle="modal" data-target="#myModal">
+                            <i class="fa fa-plus mr-2"></i>Thêm Mới
+                        </button>
+                        <!-- END BUTTON THÊM MỚI -->
+                    </div>
+                    <div class="col-md-4">
+                        <!-- BEGIN TÌM KIẾM -->
+                        <div class="input-group mb-3 rounded-pill shadow-sm">
+                            <input type="text" class="form-control rounded-pill" placeholder="Nhập từ khóa"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-white border-0" id="basic-addon2"><i
+                                        class="fa fa-search text-primary"></i></span>
+                            </div>
+                        </div>
+                        <!-- END TÌM KIẾM -->
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+                <div class="tblSanPham card shadow-lg p-3 mb-5 bg-white rounded" id="tblSanPham">
+                    <!-- BEGIN TABLE SẢN PHẨM -->
+                    <table class="table table-hover table-bordered modern-table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Giá</th>
+                                <th>Màn Hình</th>
+                                <th>Camera Sau</th>
+                                <th>Camera Trước</th>
+                                <th>Hình Ảnh</th>
+                                <th>Mô Tả</th>
+                                <th>Loại</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblDanhSachSP"></tbody>
+                    </table>
+                    <!-- Loader -->
+                    <div style="display: none;" id="loader" class="loader"></div>
+                    <!-- END TABLE SẢN PHẨM -->
+                </div>
+                <br />
+            </div>
+            <!-- Kết thúc danh sách sản phẩm -->
+        </div>
+
+        <!--KetThuc Tabmenu-->
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-lg shadow-lg border-0">
+                    <!-- Modal Header -->
+                    <div class="modal-header bg-primary text-white rounded-top">
+                        <h4 class="modal-title font-weight-bold">Thêm / Sửa Sản Phẩm</h4>
+                        <button type="button" class="close text-white" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+                 <!-- Modal body -->
+<div class="modal-body">
+    <form role="form" id="productForm"> 
+    <div class="form-group">
+      <label class="font-weight-bold">Tên Sản Phẩm</label>
+      <input id="TenSP" class="form-control rounded-pill" placeholder="Nhập vào tên sản phẩm" />
+      <span class="sp-thongbao text-danger" id="tbTenSP"></span>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold">Giá</label>
+      <input id="GiaSP" class="form-control rounded-pill" placeholder="Nhập vào giá" />
+      <span class="sp-thongbao text-danger" id="tbGiaSP"></span>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold">Màn Hình</label>
+      <input id="ManHinh" class="form-control rounded-pill" placeholder="Nhập thông số màn hình" />
+      <span class="sp-thongbao text-danger" id="tbManHinh"></span>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold">Camera Sau</label>
+      <input id="CameraSau" class="form-control rounded-pill" placeholder="Nhập thông số camera sau" />
+      <span class="sp-thongbao text-danger" id="tbCameraSau"></span>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold">Camera Trước</label>
+      <input id="CameraTruoc" class="form-control rounded-pill" placeholder="Nhập thông số camera trước" />
+      <span class="sp-thongbao text-danger" id="tbCameraTruoc"></span>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold">Hình Ảnh</label>
+      <input id="HinhSP" class="form-control rounded-pill" placeholder="Nhập vào URL hình sản phẩm" />
+      <span class="sp-thongbao text-danger" id="tbHinhSP"></span>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold">Mô Tả</label>
+      <textarea id="MoTa" class="form-control rounded-lg" placeholder="Nhập mô tả sản phẩm"></textarea>
+      <span class="sp-thongbao text-danger" id="tbMoTa"></span>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold">Loại Sản Phẩm</label>
+      <input id="LoaiSP" class="form-control rounded-pill" placeholder="Nhập loại (ví dụ: iphone, Samsung...)" />
+      <span class="sp-thongbao text-danger" id="tbLoaiSP"></span>
+    </div>
+</form>
+  </div>
+  
+                    <!-- Modal footer -->
+                    <div class="modal-footer border-0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js"
+        integrity="sha512-FPlUpimug7gt7Hn7swE8N2pHw/+oQMq/+R/hH/2hZ43VOQ+Kjh25rQzuLyPz7aUWKlRpI7wXbY6+U3oFPGjPOA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="./../controllers/main.js"></script>
+</body>
+
+</html>
