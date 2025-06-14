@@ -24,9 +24,12 @@ const renderListProduct = (data) => {
             </td>
             <td>${product.desc}</td>
             <td>${product.type}</td>
-            <td>
-            <button class="btn btn-danger" onclick="onDeleteProduct(${product.id})">Delete</button>
-            </td>
+           <td>
+  <div class="d-flex justify-content-center gap-2">
+    <button class="btn btn-info" data-toggle="modal" data-target="#myModal" onclick="onEditProduct(${product.id})">Edit</button>
+    <button class="btn btn-danger ml-2" onclick="onDeleteProduct(${product.id})">Delete</button>
+  </div>
+</td>
         </tr>
         `;
     }
@@ -120,3 +123,85 @@ const onAddProduct = () => {
       
 }
 window.onAddProduct=onAddProduct;
+
+
+const onEditProduct = (id) => {
+    const promise = service.getProductById(id);
+    promise
+    .then((result) => {
+      const product = result.data;
+      getId("TenSP").value = product.name ;
+      getId("GiaSP").value = product.price ;
+      getId("ManHinh").value = product.screen ;
+      getId("CameraSau").value = product.backCamera ;
+      getId("CameraTruoc").value = product.frontCamera ;
+      getId("HinhSP").value = product.img ;
+      getId("MoTa").value = product.desc ;
+      getId("LoaiSP").value = product.type ;
+    })
+    .catch((error) => {
+      console.log(error);
+      
+    })
+
+    document.getElementsByClassName("modal-title")[0].innerHTML="Edit Product";
+    const btnUpdate = `<button class = "btn btn-success" onclick="onUpdateProduct(${id})">Update Product</button>`
+    document.getElementsByClassName("modal-footer")[0].innerHTML=btnUpdate;
+}
+
+window.onEditProduct=onEditProduct;
+
+const onUpdateProduct = (id) => {
+    const product = getValue();
+    if (!product) return;
+    product.id = id;
+    console.log(product);
+
+    const promise = service.updateProductId(product);
+    promise
+      .then((result) => {
+        alert(`Update Product ${result.data.name} Success`)
+        document.getElementsByClassName("close")[0].click();
+        getListProduct();
+      })
+       .catch((error) => {
+        console.log(error);
+        
+       })
+}
+window.onUpdateProduct=onUpdateProduct;
+
+
+getId("searchInput").addEventListener("input", function () {
+    const keyword = this.value;
+    const promise = service.getListProductApi();
+    promise
+      .then((result) => {
+        const matched = service.searchProduct(keyword, result.data);
+        renderListProduct(matched);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
+
+  getId("sortAscBtn").addEventListener("click", () => {
+    service.getListProductApi()
+      .then((result) => {
+        const sorted = service.sortProductsByPrice(result.data, "asc");
+        renderListProduct(sorted);
+        toggleActiveButton("sortAscBtn");
+      })
+      .catch(console.log);
+  });
+  
+  getId("sortDescBtn").addEventListener("click", () => {
+    service.getListProductApi()
+      .then((result) => {
+        const sorted = service.sortProductsByPrice(result.data, "desc");
+        renderListProduct(sorted);
+        toggleActiveButton("sortDescBtn");
+      })
+      .catch(console.log);
+  });

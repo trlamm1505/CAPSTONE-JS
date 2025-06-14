@@ -63,6 +63,7 @@
             </li>
         </ul>
         <hr class="hr-purple">
+        
         <!-- Tab panes -->
         <div class="tab-content">
             <!--Danh sách sản phẩm -->
@@ -79,7 +80,7 @@
                     <div class="col-md-4">
                         <!-- BEGIN TÌM KIẾM -->
                         <div class="input-group mb-3 rounded-pill shadow-sm">
-                            <input type="text" class="form-control rounded-pill" placeholder="Nhập từ khóa"
+                            <input id="searchInput" type="text" class="form-control rounded-pill" placeholder="Nhập từ khóa"
                                 aria-label="Recipient's username" aria-describedby="basic-addon2" />
                             <div class="input-group-append">
                                 <span class="input-group-text bg-white border-0" id="basic-addon2"><i
@@ -88,6 +89,17 @@
                         </div>
                         <!-- END TÌM KIẾM -->
                     </div>
+                    
+                     <!-- Sắp xếp tăng , giảm -->
+                     <div class="d-flex justify-content-end gap-2">
+                        <button id="sortAscBtn" class="btn btn-outline-purple btn-sm mr-2 rounded-pill shadow-sm">
+                          <i class="fa fa-sort-amount-asc mr-1"></i>Giá tăng
+                        </button>
+                        <button id="sortDescBtn" class="btn btn-outline-purple btn-sm rounded-pill shadow-sm">
+                          <i class="fa fa-sort-amount-desc mr-1"></i>Giá giảm
+                        </button>
+                      </div>
+
                 </div>
                 <div class="clear-fix"></div>
                 <div class="tblSanPham card shadow-lg p-3 mb-5 bg-white rounded" id="tblSanPham">
