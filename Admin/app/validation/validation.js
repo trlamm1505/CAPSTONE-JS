@@ -61,16 +61,33 @@ class Validation{
       }
     
       checkImgURL(value, idNoti) {
+        const trimmed = value.trim();
         const regex = /^(https?:\/\/.*\.(png|jpg|jpeg|gif|webp))$/i;
-        if (value.trim() === "") {
+      
+        if (trimmed === "") {
           getId(idNoti).innerHTML = "(*) Vui lòng nhập URL hình ảnh!";
           getId(idNoti).style.display = "block";
           return false;
-        } else if (!regex.test(value)) {
-          getId(idNoti).innerHTML = "(*) URL hình ảnh không hợp lệ!";
+        }
+      
+        if (!/^https?:\/\//i.test(trimmed)) {
+          getId(idNoti).innerHTML = "(*) URL phải bắt đầu bằng http:// hoặc https://";
           getId(idNoti).style.display = "block";
           return false;
         }
+      
+        if (!/\.(png|jpg|jpeg|gif|webp)$/i.test(trimmed)) {
+          getId(idNoti).innerHTML = "(*) URL phải kết thúc bằng đuôi hình ảnh hợp lệ (png, jpg, jpeg, gif, webp)";
+          getId(idNoti).style.display = "block";
+          return false;
+        }
+      
+        if (!regex.test(trimmed)) {
+          getId(idNoti).innerHTML = "(*) URL không hợp lệ. Vui lòng kiểm tra lại định dạng!";
+          getId(idNoti).style.display = "block";
+          return false;
+        }
+      
         getId(idNoti).innerHTML = "";
         getId(idNoti).style.display = "none";
         return true;

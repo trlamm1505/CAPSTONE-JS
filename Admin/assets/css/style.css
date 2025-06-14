@@ -227,3 +227,22 @@
         font-size: 0.95rem;
     }
 }
+
+.btn-outline-purple {
+    color: #a259ff;
+    border: 1.5px solid #a259ff;
+    background-color: white;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .btn-outline-purple:hover,
+  .btn-outline-purple:focus,
+  .btn-outline-purple:active,
+  .btn-outline-purple.active {
+    background-color: #a259ff !important;
+    color: white !important;
+    border-color: #a259ff !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
