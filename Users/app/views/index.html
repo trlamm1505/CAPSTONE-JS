@@ -41,9 +41,9 @@
               <i class="fas fa-user-shield"></i>
               <span>Admin</span>
             </a>
-            <a href="./cart.html" class="flex items-center space-x-2 hover:text-purple-200 transition">
+            <a id="openCartBtn" class="flex items-center space-x-2 hover:text-purple-200 transition">
               <i class="fas fa-shopping-cart"></i>
-              <span>Cart</span>
+              <span id="cartCount"></span>
             </a>
           </div>
       </div>
@@ -94,6 +94,52 @@
 
   <div style="display: none;" id="loader" class="loader"></div>
   <div id="tblDanhSachSP" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6 py-10 justify-items-center bg-gray-50"></div>
+  <!-- Form Cart Modal -->
+  <div id="formCard" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div class="bg-white rounded-xl shadow-xl w-[90%] max-w-4xl p-6 relative">
+      <!-- Close Button -->
+      <button onclick="document.getElementById('formCard').classList.add('hidden')" 
+              class="absolute top-3 right-4 text-2xl font-bold text-gray-500 hover:text-red-500">&times;</button>
+
+      <!-- Title -->
+      <h2 class="text-2xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+        <i class="fas fa-shopping-cart"></i> Your Shopping Cart
+      </h2>
+
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-left border border-gray-200 rounded-md overflow-hidden shadow">
+          <thead class="bg-purple-100 text-purple-800 text-sm uppercase tracking-wider">
+            <tr>
+              <th class="px-4 py-3">Image</th>
+              <th class="px-4 py-3">Name</th>
+              <th class="px-4 py-3">Price</th>
+              <th class="px-4 py-3">Quantity</th>
+              <th class="px-4 py-3">Total</th>
+              <th class="px-4 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody id="cartBody" class="bg-white divide-y divide-gray-200 text-sm">
+            <!-- Rows will be rendered here by JS -->
+          </tbody>
+          <tfoot class="bg-gray-50 text-right text-sm">
+            <tr>
+              <td colspan="6" class="px-4 py-3 font-semibold">
+                Tổng tiền: <span id="totalMoney" class="text-green-600">$0.00</span>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <!-- Nút thanh toán -->
+        <div class="text-right mt-4">
+          <button id="payBtn" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-md shadow transition">
+            Pay
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -102,5 +148,28 @@
         integrity="sha512-FPlUpimug7gt7Hn7swE8N2pHw/+oQMq/+R/hH/2hZ43VOQ+Kjh25rQzuLyPz7aUWKlRpI7wXbY6+U3oFPGjPOA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="module" src="./../controllers/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const openCartBtn = document.getElementById("openCartBtn");
+      const formCard = document.getElementById("formCard");
+
+      if (openCartBtn && formCard) {
+        openCartBtn.addEventListener("click", (e) => {
+          e.preventDefault(); // Ngăn chuyển trang nếu có
+          formCard.classList.remove("hidden");  // hiện
+          formCard.classList.add("flex");       // đảm bảo flex layout
+        });
+
+        // Optional: đóng lại nếu click ra ngoài (nâng cao)
+        formCard.addEventListener("click", (e) => {
+          if (e.target === formCard) {
+            formCard.classList.add("hidden");
+            formCard.classList.remove("flex");
+          }
+        });
+      }
+    });
+  </script>
+
 </body>
 </html>
